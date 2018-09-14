@@ -1,29 +1,32 @@
 package main
 
 import (
-	"fmt"
-	"ultimate/src/infrastructure"
+	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 func main() {
 
-	//gin.SetMode(gin.DebugMode)
-	//
-	//app := gin.Default()
-	//
-	//router := app.Group("/api/v1")
-	//{
-	//	router.GET("/user",)
-	//}
-	//
-	//app.Run(":7074")
+	gin.SetMode(gin.DebugMode)
 
+    app := gin.Default()
 
-	h := &infrastructure.HttpModel{}
+    route := app.Group("/api/v1")
+    {
+    	route.GET("/user", func(context *gin.Context) {
+			context.JSON(http.StatusOK,gin.H{
+				"response":context.Query("name"),
+			})
+		})
 
-	h.Set(h,"ok")
+    	route.POST("/user", func(context *gin.Context) {
+			context.JSON(http.StatusOK,gin.H{
+				"response":context.PostForm("name"),
+			})
+		})
 
-	fmt.Println(h.Response)
+	}
 
+    app.Run(":7074")
 
 }
