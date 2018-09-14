@@ -1,11 +1,13 @@
 package domain
 
-type User struct {
-	
-	ID   int         `json:"id"`
-	Name string      `json:"name"`
-	Age  int         `json:"age"`
-	Mark int         `json:"mark"`
-	Attr interface{} `json:"attr"`
-	
-}
+type (
+
+	User struct {
+	  ID int `json:"id"`
+	  Name string `json:"name"`
+	  Attr interface{} `json:"attr"`
+	  Lock string `json:"lock"`
+	  Age int `json:"age"`
+	}
+
+)

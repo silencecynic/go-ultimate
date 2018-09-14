@@ -11,7 +11,7 @@ var database *sql.DB
 func Connection() *sql.DB  {
 
 	var err error
-	database , err = sql.Open("mysql","mysql:mysql#root@tcp(47.92.165.70:3306)/mydb?charset=utf8")
+	database , err = sql.Open("mysql","mysql:mysql#root@tcp(47.92.165:3306)/mydb?charset=utf8")
 	infrastructure.Error(err)
 	database.SetMaxOpenConns(10)
 	database.SetMaxIdleConns(10)
